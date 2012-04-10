@@ -203,8 +203,14 @@ NSString* const GCDiscreetNotificationViewActivityKey = @"activity";
             [UIView setAnimationDidStopSelector:@selector(animationDidStop:finished:context:)];
         }
         
-        if (hide) self.center = self.hidingCenter;
-        else {
+        if (hide)
+        {
+            self.center = self.hidingCenter;
+            self.alpha = 0;
+        }
+        else 
+        {
+            self.alpha = 1;
             [self.activityIndicator startAnimating];
             self.center = self.showingCenter;
         }
