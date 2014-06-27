@@ -7,6 +7,7 @@
 //
 
 #import "GCDiscreetNotificationView.h"
+#include <tgmath.h>
 
 const CGFloat GCDiscreetNotificationViewBorderSize = 25;
 const CGFloat GCDiscreetNotificationViewPadding = 5;
@@ -399,8 +400,8 @@ NSString* const GCDiscreetNotificationViewActivityKey = @"activity";
 - (void) placeOnGrid {
     CGRect frame = self.frame;
     
-    frame.origin.x = roundf(frame.origin.x);
-    frame.origin.y = roundf(frame.origin.y);
+    frame.origin.x = round(frame.origin.x);
+    frame.origin.y = round(frame.origin.y);
     
     self.frame = frame;
 }
