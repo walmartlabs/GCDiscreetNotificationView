@@ -100,9 +100,12 @@ NSString* const GCDiscreetNotificationViewActivityKey = @"activity";
     CGFloat textSizeWidth = 0;
     if (self.textLabel)
     {
+        NSMutableParagraphStyle *paragraphStyle = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
+        paragraphStyle.lineBreakMode = NSLineBreakByWordWrapping;
         CGRect boundingRect = [self.textLabel boundingRectWithSize:maxLabelSize
                                                             options:(NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading)
-                                                         attributes:@{NSFontAttributeName: self.label.font}
+                                                        attributes:@{ NSParagraphStyleAttributeName: paragraphStyle,
+                                                                      NSFontAttributeName: self.label.font }
                                                             context:nil];
         textSizeWidth = boundingRect.size.width;
         
