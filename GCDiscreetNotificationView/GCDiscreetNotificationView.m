@@ -26,7 +26,7 @@ NSString* const GCDiscreetNotificationViewActivityKey = @"activity";
 @property (nonatomic, readonly) CGPoint hidingCenter;
 
 @property (nonatomic, assign) BOOL animating;
-@property (nonatomic, retain) NSDictionary* animationDict;
+@property (nonatomic, strong) NSDictionary* animationDict;
 
 - (void) show:(BOOL)animated name:(NSString *)name;
 - (void) hide:(BOOL)animated name:(NSString *)name;
@@ -79,13 +79,9 @@ NSString* const GCDiscreetNotificationViewActivityKey = @"activity";
     
     self.view = nil;
     
-    [label release];
     label = nil;
     
-    [activityIndicator release];
     activityIndicator = nil;
-    
-    [super dealloc];
 }
 
 #pragma mark -
@@ -114,7 +110,6 @@ NSString* const GCDiscreetNotificationViewActivityKey = @"activity";
                                                         attributes: attributes
                                                             context:nil];
         
-        [paragraphStyle release];
         textSizeWidth = boundingRect.size.width;
         
     }
@@ -315,7 +310,6 @@ NSString* const GCDiscreetNotificationViewActivityKey = @"activity";
         else {
             [activityIndicator removeFromSuperview];
             
-            [activityIndicator release];
             activityIndicator = nil;
         }
         
@@ -325,13 +319,12 @@ NSString* const GCDiscreetNotificationViewActivityKey = @"activity";
 
 - (void) setView:(UIView *) aView {
     if (self.view != aView) {
-        [self retain];
+
         [self removeFromSuperview];
         
         [aView addSubview:self];
         [self setNeedsLayout];
         
-        [self release];
     }
 }
 
@@ -428,7 +421,6 @@ NSString* const GCDiscreetNotificationViewActivityKey = @"activity";
         NSMutableDictionary* mutableAnimationDict = [self.animationDict mutableCopy];
         [mutableAnimationDict addEntriesFromDictionary:newDict];
         self.animationDict = mutableAnimationDict;
-        [mutableAnimationDict release];
     }
     
     if (!self.animating) [self hide:YES name:GCChangeProprety];
