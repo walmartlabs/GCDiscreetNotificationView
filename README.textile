@@ -1,3 +1,11 @@
+***
+# NOTICE:
+
+## This repository has been archived and is not supported.
+
+[![No Maintenance Intended](http://unmaintained.tech/badge.svg)](http://unmaintained.tech/)
+***
+
 h1. GCDiscreetNotificationView
 
 GCDiscreetNotificationView is a discreet, non-modal, notification view for iOS. You can use it to show an activity or state of you app without blocking the user interactions.
